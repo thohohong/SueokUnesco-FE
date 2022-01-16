@@ -10,9 +10,10 @@ export const IconButton = ({id, name, completed, onPressOut, size}) => {
     }
     return (
         <Pressable onPressOut={_onPressOut} style={IconButtonStyle.IconButton}>
-            { size === "M" ? 
-                <Image source={name} completed={completed} style={IconButtonStyle.image}/>
-                : <Image source={name} completed={completed} style={[IconButtonStyle.image, {width: 24, height: 24}]}/>}
+        { size === "M" ? 
+            <Image source={name} completed={completed} style={IconButtonStyle.image}/>
+          : <Image source={name} completed={completed} style={[IconButtonStyle.image, {width: 24, height: 24}]}/>
+        }
         </Pressable>
     )
 }
