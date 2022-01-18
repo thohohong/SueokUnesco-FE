@@ -88,7 +88,7 @@ export const Home = () => {
     return (
       <View>
         {Object.values(todos).map(item => (
-          <Pressable key={item.todo_idx} style={styles.contentsBox} onPressOut={() => console.log(item.todo_idx)}>
+          <Pressable key={item.todo_idx} style={styles.contentsBox} onPressOut={() => {}}>
             <IconButton
               id={item.todo_idx}
               size="S"
@@ -131,7 +131,6 @@ export const Home = () => {
     useEffect(()=>{
       axios.get("https://dog.ceo/api/breeds/image/random")
       .then((response)=>{
-        console.log("1 : " + response.data.message);
         const data_ = response.data.message;
         setImg(data_);
       })

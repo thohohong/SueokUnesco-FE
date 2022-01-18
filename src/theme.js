@@ -4,4 +4,5 @@ export const theme = {
   stroke: '#DEDEDE',
   emptyImage: '#ECECEC',
   caption: '#8B8B8B',
+  unfocused: "#9E9E9E",
 }
