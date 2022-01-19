@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 export const CategoryNavigator = props => {
   return (
       <Stack.Navigator>
-        <Stack.Screen name="Category" component={Category}/>
+        <Stack.Screen name="Category" component={Category} options={{title:"게시판"}}/>
         <Stack.Screen name="ArticleList" component={ArticleList}/>
       </Stack.Navigator>
   );

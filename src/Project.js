@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button, ImageBackground, ScrollView, TouchableO
 import {theme} from './theme';
 import axios from 'axios';
 import {textStyle} from './Style';
+import { TextButton } from './components/Button';
 
 /* Navigation */
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,7 +14,7 @@ const Stack = createNativeStackNavigator();
 const ProjectNavigator = props => {
   return(
     <Stack.Navigator>
-      <Stack.Screen name="ProjectList" component={ProjectList}/>
+      <Stack.Screen name="ProjectList" component={ProjectList} options={{title:"프로젝트"}}/>
     </Stack.Navigator>
   )
 }
@@ -49,20 +50,21 @@ const ProjectList = props => {
 
   const ToggleText = props => {
     return (
-      <TouchableOpacity style={{paddingRight: 8,}} onPress={props.onPress}>
+      <TouchableOpacity style={{paddingRight: 8,}} onPress={()=>{setViewState()}}>
         <Text style={[{fontSize: 18}, viewState == props.type ? {color: theme.primary} : {color: theme.unfocused}]}>
           {props.title}
         </Text>
       </TouchableOpacity>
     )
   }
+  
 
   return (
     <View style={{flex: 1}}>
       <View style={styles.subNavigation}>
-        <ToggleText title="전체"   type="whole"     onPress={()=>setViewState("whole")}/>
-        <ToggleText title="진행중" type="doing"     onPress={()=>setViewState("doing")}/>
-        <ToggleText title="종료"   type="finished"  onPress={()=>setViewState("finished")}/>
+        <TextButton title="전체"   focus={viewState=="whole"? true : false} onPress={()=>setViewState("whole")}/>
+        <TextButton title="진행중" focus={viewState=="doing"? true : false} onPress={()=>setViewState("doing")}/>
+        <TextButton title="종료"   focus={viewState=="finished"? true : false} onPress={()=>setViewState("finished")}/>
       </View>
       <ScrollView style={{margin: 0, flex: 1,}}>
         <ProjectBox title="Project Title" contents="Temp Detail Contents."/>

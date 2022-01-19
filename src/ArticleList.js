@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     Box: {
         backgroundColor: '#ffffff',
         borderColor: theme.stroke,
-        borderWidth: 0.7,
+        borderBottomWidth: 1,
         paddingHorizontal: 16,
         paddingVertical: 8,
     },

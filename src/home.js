@@ -137,9 +137,9 @@ export const Home = () => {
     }, [])
   
     return (
-      <View style={{flexDirection: 'row', height: 100, flex: 1, borderWidth: 1, borderColor: theme.stroke}}>
+      <View style={{flexDirection: 'row', height: 100, flex: 1, borderBottomWidth: 1, borderColor: theme.stroke}}>
         {img != "" ?
-          <Image style={{height: 100, width: 120, resizeMode: 'cover'}}source={{uri: img}} /> 
+          <Image style={{height: 100, width: 120, resizeMode: 'cover', borderRadius: 10}} source={{uri: img}} /> 
           : <View style={{height: 100, width: 120, backgroundColor: theme.emptyImage}}></View>
         }
         <View style={{flexDirection: 'column', padding: 12, flex: 1}}>
