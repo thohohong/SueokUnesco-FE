@@ -3,9 +3,9 @@ import { Text, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import {Home} from './home';
-import {CategoryNavigator} from './CategoryNavigator';
-import {Roadmap} from './Roadmap';
+import {Home} from './Home';
+import CategoryNavigator from './Category';
+import RoadmapNavigator from './Roadmap';
 import {ProjectNavigator} from './Project';
 import {images} from './images';
 
@@ -32,7 +32,7 @@ function TabBar() {
         }}}
       />
       <Tab.Screen
-        name="로드맵" component={Roadmap}
+        name="로드맵" component={RoadmapNavigator}
         options={{headerShown: false, tabBarIcon:({focused, color, size})=>{
           return(<TabBarIcon source={images.roadmap} color={color} size={size}/>)
         }}}

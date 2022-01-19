@@ -1,11 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import { StatusBar, StyleSheet, Dimensions, View, Text, Image, ScrollView, Pressable } from 'react-native';
-import { MainTitle } from './components/title';
 import { images } from './images';
 import { IconButton } from './components/IconButton';
 import { textStyle, componentStyle } from './Style';
+import TodoList from './components/TodoList';
 import { theme } from './theme'
 import axios from 'axios';
+
+const MainTitle = () => {
+  return (
+    <View
+      style={{flexDirection: 'row', marginVertical: 10, marginLeft: 16,}}
+    >
+      <Image
+        style={{width: 60, height: 60,}}
+        source={require('../assets/icon/unesco.png')}
+        resizeMode='stretch'
+      />
+      <View
+        style={{flexDirection: 'column', justifyContent: 'center', marginLeft: 5}}
+      >
+        <Text style={{fontSize: 16, color: theme.text,}}>문산수억고등학교</Text>
+        <Text style={{fontSize: 24, color: theme.text,}}>유네스코</Text>
+      </View>
+  </View>
+  );
+};
 
 export const Home = () => {
   let memberCache = {}; //cache of im
@@ -76,29 +96,8 @@ export const Home = () => {
       {todo_idx: 2, contents: "hello 2", done: false}
     ];
 
-    const [todos, setTodos] = useState(todoList);
-
-    const _todoToggle = (id) => {
-      const cur_todo = Object.assign({}, todos);
-      cur_todo[id].done ? cur_todo[id].done = false : cur_todo[id].done = true;
-
-      setTodos(cur_todo);
-    }
-
-    return (
-      <View>
-        {Object.values(todos).map(item => (
-          <Pressable key={item.todo_idx} style={styles.contentsBox} onPressOut={() => {}}>
-            <IconButton
-              id={item.todo_idx}
-              size="S"
-              name={item.done ? images.done : images.undone}
-              onPressOut={_todoToggle}
-            />
-            <Text style={[textStyle.body, {marginLeft: 4, alignSelf: 'center'}]}>{item.contents}</Text>
-          </Pressable>
-        ))}
-      </View>
+    return(
+      <TodoList todoList={todoList}/>
     )
   };
 
@@ -137,10 +136,10 @@ export const Home = () => {
     }, [])
   
     return (
-      <View style={{flexDirection: 'row', height: 100, flex: 1, borderBottomWidth: 1, borderColor: theme.stroke}}>
+      <View style={{flexDirection: 'row', height: 100, flex: 1, borderBottomWidth: 1, borderColor: theme.stroke, alignItems: 'center'}}>
         {img != "" ?
-          <Image style={{height: 100, width: 120, resizeMode: 'cover', borderRadius: 10}} source={{uri: img}} /> 
-          : <View style={{height: 100, width: 120, backgroundColor: theme.emptyImage}}></View>
+          <Image style={{height: 90, width: 110, resizeMode: 'cover', borderRadius: 10, marginLeft: 4}} source={{uri: img}} /> 
+          : <View style={{height: 90, width: 110, borderRadius: 10, marginLeft: 4}}></View>
         }
         <View style={{flexDirection: 'column', padding: 12, flex: 1}}>
           <Text style={[textStyle.body, {paddingBottom: 8,}]}>{props.title}</Text>
@@ -185,8 +184,6 @@ export const Home = () => {
     
   );
 }
-
-const width = Dimensions.get('window').width;
 
 const HomeStyles = StyleSheet.create({
   scrollView : {
